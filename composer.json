@@ -14,7 +14,7 @@
         "ext-curl": "*"
     },
     "autoload": {
-        "psr-0": {"PhpAmqpLib": ""}
+        "psr-0": {"PopHbase": ""}
     },
-    "license": "LGPL-2.1"
+    "license": "BSD"
 }

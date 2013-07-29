@@ -23,7 +23,7 @@ class TablesCreateTest extends PopHbaseTestCase{
 		// Test with one table
 		$hbase->tables->create('pop_hbase_create','my_column');
 		$this->assertSame(2,count($tables));
-		$this->assertTrue($tables->current() instanceof PopHbaseTable);
+		$this->assertTrue($tables->current() instanceof Table);
 		$hbase->tables->delete('pop_hbase_create');
 	}
 	public function testInvalidArguments(){

@@ -1,5 +1,7 @@
 <?php
 
+namespace PopHBase;
+
 /**
  * Copyright (c) 2008, SARL Adaltas. All rights reserved.
  * Code licensed under the BSD License:
@@ -11,7 +13,7 @@
  *
  * @author		David Worms info(at)adaltas.com
  */
-class PopHbaseTables extends PopHbaseIterator{
+class Tables extends Iterator{
 	
 	public $hbase;
 	
@@ -51,7 +53,7 @@ class PopHbaseTables extends PopHbaseIterator{
 			return $this;
 		}
 		foreach($tables['table'] as $table){
-			$this->__data['data'][$table['name']] = new PopHbaseTable($this->hbase,$table['name']);
+			$this->__data['data'][$table['name']] = new Table($this->hbase,$table['name']);
 			$this->__data['loaded'][$table['name']] = true;
 		}
 		return $this;
@@ -194,7 +196,7 @@ class PopHbaseTables extends PopHbaseIterator{
 	 */
 	public function table($table){
 		if(!isset($this->__data['data'][$table])){
-			$this->__data['data'][$table] = new PopHbaseTable($this->hbase,$table);
+			$this->__data['data'][$table] = new Table($this->hbase,$table);
 		}
 		return $this->__data['data'][$table];
 	}

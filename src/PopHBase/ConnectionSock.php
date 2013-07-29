@@ -1,5 +1,8 @@
 <?php
 
+
+namespace PopHBase;
+
 /**
  * Copyright (c) 2008, SARL Adaltas. All rights reserved.
  * Code licensed under the BSD License:
@@ -11,7 +14,7 @@
  *
  * @author		David Worms info(at)adaltas.com
  */
-class PopHbaseConnectionSock implements PopHbaseConnection{
+class ConnectionSock implements Connection{
 
 	public $options;
 	
@@ -72,7 +75,7 @@ class PopHbaseConnectionSock implements PopHbaseConnection{
 	/**
 	 * Open the connection to the HBase server.
 	 * 
-	 * @return PopHbaseConnection Current connection instance
+	 * @return Connection Current connection instance
 	 */
 	public function connect() {
 		if(isset($this->options['sock'])){
@@ -80,7 +83,7 @@ class PopHbaseConnectionSock implements PopHbaseConnection{
 		}
 		$this->options['sock'] = fsockopen($this->options['host'], $this->options['port'], $errNum, $errString);
 		if(!$this->options['sock']) {
-			throw new PopHbaseException('Failed connecting to '.(!empty($this->options['username'])?$this->options['username'].'@':'').$this->options['host'].':'.$this->options['port'].' ('.$errString.')');
+			throw new Exception('Failed connecting to '.(!empty($this->options['username'])?$this->options['username'].'@':'').$this->options['host'].':'.$this->options['port'].' ('.$errString.')');
 		}
 		return $this;
 	}
@@ -95,7 +98,7 @@ class PopHbaseConnectionSock implements PopHbaseConnection{
 	/**
 	 * Close the connection to the HBase server.
 	 * 
-	 * @return PopHbaseConnection Current connection instance
+	 * @return Connection Current connection instance
 	 */
 	public function disconnect() {
 		if(!isset($this->options['sock'])){
@@ -110,7 +113,7 @@ class PopHbaseConnectionSock implements PopHbaseConnection{
 	/**
 	 * Send HTTP REST command.
 	 * 
-	 * @return PopHbaseResponse Response object parsing the HTTP HBase response.
+	 * @return Response Response object parsing the HTTP HBase response.
 	 */
 	public function execute($method,$url,$data=null,$raw=false) {
 		$url = (substr($url, 0, 1) == '/' ? $url : '/'.$url);
@@ -205,7 +208,7 @@ class PopHbaseConnectionSock implements PopHbaseConnection{
 //        echo '------------------------'."\n";
 //		print_r($body);
 //        echo '------------------------'."\n";
-		return new PopHbaseResponse($headers,$body,$raw);
+		return new Response($headers,$body,$raw);
 	}
 
 }

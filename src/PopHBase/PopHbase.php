@@ -1,5 +1,5 @@
 <?php
-
+namespace PopHBase;
 /**
  * Copyright (c) 2008, SARL Adaltas. All rights reserved.
  * Code licensed under the BSD License:
@@ -17,9 +17,9 @@ class PopHbase{
 	
 	public function __construct($options=array()){
 		if(empty($options['connection'])){
-			$options['connection'] = 'PopHbaseConnectionCurl';
-		}else if (class_exists('PopHbaseConnection'.ucfirst($options['connection']))){
-			$options['connection'] = 'PopHbaseConnection'.ucfirst($options['connection']);
+			$options['connection'] = 'ConnectionCurl';
+		}else if (class_exists('Connection'.ucfirst($options['connection']))){
+			$options['connection'] = 'Connection'.ucfirst($options['connection']);
 		}else if (!class_exists($options['connection'])){
 			throw new Exception('Invalid connection class: "'.$options['connection'].'"');
 		}
@@ -42,7 +42,7 @@ class PopHbase{
 				return $this->getTables();
 				break;
 			case 'request':
-				return new PopHbaseRequest($this);
+				return new Request($this);
 				break;
 		}
 	}
@@ -66,7 +66,7 @@ class PopHbase{
 	 */
 	public function getTables(){
 		if(isset($this->tables)) return $this->tables;
-		return $this->tables = new PopHbaseTables($this);
+		return $this->tables = new Tables($this);
 	}
 	
 	/**

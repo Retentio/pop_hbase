@@ -1,0 +1,20 @@
+{
+    "name": "pop/pop_hbase",
+    "type": "library",
+    "description": "Pop HBase is a PHP client to an HBase server. It use JSON Rest and the Curl extension to communicate with the HBase server and provides a very simple and convenient interface.",
+    "keywords": ["hbase", "rest", "json","curl"],
+    "homepage": "https://github.com/pop/pop_hbase",
+    "authors": [
+        {
+            "name" : "Worms David"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-0": {"PhpAmqpLib": ""}
+    },
+    "license": "LGPL-2.1"
+}

@@ -25,6 +25,6 @@ class TablesDeleteTest extends PopHbaseTestCase{
 		$this->assertSame(2,count($tables));
 		$hbase->tables->delete('pop_hbase_delete');
 		$this->assertSame(1,count($tables));
-		$this->assertTrue($tables->current() instanceof PopHbaseTable);
+		$this->assertTrue($tables->current() instanceof Table);
 	}
 }

@@ -17,10 +17,10 @@ require_once dirname(__FILE__).'/../PopHbaseTestCase.php';
 class HbaseTablesTest extends PopHbaseTestCase{
 	public function testProperty(){
 		$hbase = new PopHbase($this->config);
-		$this->assertTrue($hbase->tables instanceof PopHbaseTables);
+		$this->assertTrue($hbase->tables instanceof Tables);
 	}
 	public function testMethod(){
 		$hbase = new PopHbase($this->config);
-		$this->assertTrue($hbase->table('pop_hbase') instanceof PopHbaseTable);
+		$this->assertTrue($hbase->table('pop_hbase') instanceof Table);
 	}
 }

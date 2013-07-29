@@ -1,5 +1,7 @@
 <?php
 
+namespace PopHBase;
+
 /**
  * Copyright (c) 2008, SARL Adaltas. All rights reserved.
  * Code licensed under the BSD License:
@@ -11,7 +13,7 @@
  *
  * @author		David Worms info(at)adaltas.com
  */
-class PopHbaseTable{
+class Table{
 	
 	public $hbase;
 	public $name;
@@ -42,7 +44,7 @@ class PopHbaseTable{
 	}
 	
 	public function row($row){
-		return new PopHbaseRow($this->hbase,$this->name,$row);
+		return new Row($this->hbase,$this->name,$row);
 	}
 
 }

@@ -1,5 +1,7 @@
 <?php
 
+namespace PopHBase;
+
 /**
  * Copyright (c) 2008, SARL Adaltas. All rights reserved.
  * Code licensed under the BSD License:
@@ -11,7 +13,7 @@
  *
  * @author		David Worms info(at)adaltas.com
  */
-class PopHbaseResponse{
+class Response{
 	
 	public function __construct($headers,$body,$raw=false) {
 		$this->headers = $headers;
@@ -22,7 +24,7 @@ class PopHbaseResponse{
 //		$status = $matches[1];
 //		switch($status){
 //			case '500':
-//				throw new PopHbaseException(constant('PurHTTP::CODE_'.$status));
+//				throw new Exception(constant('PurHTTP::CODE_'.$status));
 //		}
 	}
 	

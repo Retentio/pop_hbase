@@ -14,7 +14,7 @@
         "ext-curl": "*"
     },
     "autoload": {
-        "psr-0": {"PopHbase": ""}
+        "psr-0": {"PopHBase": ""}
     },
     "license": "BSD"
 }
